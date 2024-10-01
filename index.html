@@ -1,10 +1,46 @@
 <!DOCTYPE html>
  <html>
   <head>
+    <!-- meta for the browswer to allow for mobile first designs -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
    <title>Data Collector for AGOL</title>
+
+   <style>
+    html,
+    body,
+    #viewDiv {
+     padding: 0;
+     margin: 0;
+     height: 100%;
+     width: 100%;
+    }
+   </style>
+
+   <!-- importing the css and libraries for esri.js -->
+   <link rel="stylesheet" href="https://js.arcgis.com/4.26/esri/themes/light/main.css" />
+   <script src="https://js.arcgis.com/4.26/"></script>
+
+   <!-- loading the modules -->
+   <script>
+    require([ "esri/config", "esri/Map", "esri/views/MapView" ], function(esriConfig, Map, MapView){
+
+        //add API key
+        esriConfig.apiKey = "AAPTxy8BH1VEsoebNVZXo8HurJZtzqH91EhYiqCQ_qj-RWtTWZu_K1_XG7Y-z2TWFIIqkT9RTqF2UHoN8GkjrqNbLLbTFu21rZqcKXEvDrMX4vGE5n8icL98UnU9THAZc9ropyhzNtrF6_I46NbBonEVraWp2erto6p-tht7Fckdjam73fw1b_4H53LLHssW2l_3hiAAIwkYi7zMrieH9ziTELIZBh-gTutzYUuRzTXPK_IGyo8A8a0g8rWOatmbjeNOAT1_o9Stcl9b"; 
+        
+        const myMap = new Map ({
+            basemap: "topo-vector"
+        });
+
+        const view = new MapView ({
+            container: "viewDiv",
+            map: myMap
+        });
+     });
+    </script>
+
   </head>
   <body>
-   <!-- hello world text to check if everything worked -->
-   <h1>Hello World! I am ready to collect data.</h1>
+   <div id="viewDiv"></div>
   </body>
 </html>
