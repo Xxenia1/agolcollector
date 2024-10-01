@@ -60,7 +60,9 @@
 
         const view = new MapView ({
             container: "viewDiv",
-            map: map
+            map: map,
+            zoom: 14,
+            center: [-89.4008, 43.0722]
         });
 
         const locateBtn = new Locate({
@@ -69,7 +71,8 @@
 
     //add the locate widget to the top left crner of the view
     view.ui.add(locateBtn, {
-        position: "top-left"
+        position: "top-left",
+        index:1
     });
 
         //adding the Const for the feature layer
