@@ -23,20 +23,36 @@
 
    <!-- loading the modules -->
    <script>
-    require([ "esri/config", "esri/Map", "esri/views/MapView" ], function(esriConfig, Map, MapView){
+    require([ 
+        "esri/config", 
+        "esri/Map", 
+        "esri/views/MapView" ,
+        "esri/widgets/Locate"
+    ], 
+        function(esriConfig, Map, MapView,Locate){
 
         //add API key
         esriConfig.apiKey = "AAPTxy8BH1VEsoebNVZXo8HurJZtzqH91EhYiqCQ_qj-RWtTWZu_K1_XG7Y-z2TWFIIqkT9RTqF2UHoN8GkjrqNbLLbTFu21rZqcKXEvDrMX4vGE5n8icL98UnU9THAZc9ropyhzNtrF6_I46NbBonEVraWp2erto6p-tht7Fckdjam73fw1b_4H53LLHssW2l_3hiAAIwkYi7zMrieH9ziTELIZBh-gTutzYUuRzTXPK_IGyo8A8a0g8rWOatmbjeNOAT1_o9Stcl9b"; 
-        
-        const myMap = new Map ({
+
+        const map = new Map ({
             basemap: "topo-vector"
         });
 
         const view = new MapView ({
             container: "viewDiv",
-            map: myMap
+            map: map
         });
-     });
+
+        const locateBtn = new Locate({
+            view: view
+        });
+
+    //add the locate widget to the top left crner of the view
+    view.ui.add(locateBtn, {
+        position: "top-left"
+    });
+});
+
     </script>
 
   </head>
